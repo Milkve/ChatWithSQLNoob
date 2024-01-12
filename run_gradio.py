@@ -12,7 +12,7 @@ from download import download
 def load_chain():
     # 加载问答链
     # 定义 Embeddings
-    embeddings = HuggingFaceEmbeddings(model_name="/root/data/model/sentence-transformer")
+    embeddings = HuggingFaceEmbeddings(model_name="data/model/sentence-transformer")
 
     # 向量数据库持久化路径
     persist_directory = 'data_base/vector_db/chroma'
@@ -23,7 +23,7 @@ def load_chain():
         embedding_function=embeddings
     )
 
-    llm = InternLM_LLM(model_path = "/root/data/model/Shanghai_AI_Laboratory/internlm-chat-7b")
+    llm = InternLM_LLM(model_path = "data/model/Shanghai_AI_Laboratory/internlm-chat-7b")
 
     # 你可以修改这里的 prompt template 来试试不同的问答效果
     template = """请使用以下提供的上下文来回答用户的问题。如果无法从上下文中得到答案，请回答你不知道，并总是使用中文回答。
