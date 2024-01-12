@@ -21,6 +21,8 @@ def get_files(dir_path):
                 file_list.append(os.path.join(filepath, filename))
             elif filename.endswith(".txt"):
                 file_list.append(os.path.join(filepath, filename))
+            elif filename.endswith(".csv"):
+                file_list.append(os.path.join(filepath, filename))
     return file_list
 
 # 加载文件函数
@@ -47,14 +49,10 @@ def get_text(dir_path):
 
 def persist_lyra():
     # 目标文件夹
-    tar_dir = [
-        "lyra_dataset"
-    ]
+    dir_path = "lyra_dataset"
 
     # 加载目标文件
-    docs = []
-    for dir_path in tar_dir:
-        docs.extend(get_text(dir_path))
+    docs = get_text(dir_path)
 
     # 对文本进行分块
     text_splitter = RecursiveCharacterTextSplitter(
